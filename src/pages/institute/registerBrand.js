@@ -4,12 +4,16 @@ import {
   faCheck,
   faTimes,
   faInfoCircle,
+  faBullseye,
 } from "@fortawesome/free-solid-svg-icons";
+import "./brand.css";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import "../customer/customer.css";
+import "../student/customer.css";
 import axios from "../../api/axios.js";
 import Warehouse from "./warehouse.js";
 import console from "console-browserify";
+import Moralis from "moralis";
+import Spinner from "react-bootstrap/Spinner";
 
 //Shanky Imports
 //-----------------------------------------------------------------------
@@ -81,7 +85,7 @@ function RegisterBrand() {
             return;
         }*/
     try {
-      // setSuccess(true);
+      setSuccess(true);
       /*const response = await axios.post(REGISTER_URL,
                 JSON.stringify({ name: name, price: price, descp: descp, imgURL:imgURL, serialNo: serialNo, prodLink:prodLink, tokenId:tokenId}), //backend expects: state name here
                 {
@@ -124,7 +128,7 @@ function RegisterBrand() {
 
   const [brandIndex, setBrandIndex] = useState("0");
   const [brandID, setBrandID] = useState("0");
-  // const [entryFee, setEntryFee] = useState("0");
+  const [buttonDisabled, setButtonDisabled] = useState(false);
   const [entryFee, setEntryFee] = useState("10000000000000000");
   const [smartContractAddress, setSmartContractAddress] = useState("");
 
@@ -173,11 +177,12 @@ function RegisterBrand() {
 
     setBrandIndex(tempIndex.toString());
     setBrandID(tempBrandID.toString());
-    console.log(brandID);
-    console.log(brandIndex);
+    // console.log(brandID);
+    // console.log(brandIndex);
   };
 
   const handleSuccess = async function (tx) {
+    setButtonDisabled(false);
     await tx.wait(1);
     handleNotification(tx);
     updateUI();
@@ -185,11 +190,22 @@ function RegisterBrand() {
 
   const handleNotification = function (tx) {
     dispatch({
-      type: "info",
-      message: "Transaction Created",
+      type: "success",
+      message: "Transaction Successful",
       title: "Brand Created",
       position: "topR",
-      icon: "bell",
+      icon: "checkmark",
+    });
+  };
+
+  const handleErrorNotification = function (tx) {
+    setButtonDisabled(false);
+    dispatch({
+      type: "error",
+      message: "Transaction Unsuccessful",
+      title: "Error Occured",
+      position: "topR",
+      icon: "info",
     });
   };
 
@@ -210,109 +226,135 @@ function RegisterBrand() {
     updateFee();
   }, [warrenty]);
 
+  useEffect(() => {
+    Moralis.onAccountChanged((account) => {
+      // console.log(`Account changed to ${account}`)
+      // if (account == null) {
+      //     window.localStorage.removeItem("connected")
+      //     deactivateWeb3()
+      //     console.log("Null Account found")
+      // }
+      updateUI();
+    });
+  }, []);
+
   //-------------------------------------------------------------------------------------
 
   return (
-    <div classsName="registerContainer">
-      {/*if registration of product was successful -> go to warehouse */}
-      {/* brandID !== 0 && typeof brandID !== "undefined" */}
-      {brandID !== "0" && typeof brandID !== "undefined" ? (
-        //<Link to='/dh'></Link>
-        <Warehouse
-          brandIndex={brandIndex}
-          brandAddress={smartContractAddress}
-        />
-      ) : (
-        <section>
-          <p
-            ref={errRef}
-            className={errMsg ? "errmsg" : "offscreen"}
-            aria-live="assertive"
-          >
-            {errMsg}
-          </p>
-          <h1>Register Brand</h1>
-          {/* <form onSubmit={handleSubmit}> */}
-          <label htmlFor="name">Brand Name:</label>
-          <input
-            type="text"
-            id="name"
-            ref={userRef}
-            autoComplete="off"
-            onChange={(e) => setName(e.target.value)}
-            value={name}
-            required
-            //aria-invalid={validName ? "false" : "true"}
-            //aria-describedby="uidnote"//wtf is this
-            onFocus={() => setNameFocus(true)}
-            onBlur={() => setNameFocus(false)}
-          />
-          {/*<p id="uidnote" className={nameFocus && name && !validName ? "instructions" : "offscreen"}>
+    <div className="fullbox">
+      <div classsName="regContainer">
+        {/*if registration of product was successful -> go to warehouse */}
+        {/* brandID !== 0 && typeof brandID !== "undefined" */}
+        {brandID !== "0" && typeof brandID !== "undefined" ? (
+          //<Link to='/dh'></Link>
+          <Warehouse brandIndex={brandIndex} brandId={brandID} />
+        ) : (
+          <section className="regSection">
+            <p
+              ref={errRef}
+              className={errMsg ? "errmsg" : "offscreen"}
+              aria-live="assertive"
+            >
+              {errMsg}
+            </p>
+            <h1>Register Institute</h1>
+            {/* <form onSubmit={handleSubmit}> */}
+            <br></br>
+            <label htmlFor="name">Institute Name : </label>
+            <input
+              type="text"
+              id="name"
+              ref={userRef}
+              autoComplete="off"
+              onChange={(e) => setName(e.target.value)}
+              value={name}
+              required
+              //aria-invalid={validName ? "false" : "true"}
+              //aria-describedby="uidnote"//wtf is this
+              onFocus={() => setNameFocus(true)}
+              onBlur={() => setNameFocus(false)}
+            />
+            {/*<p id="uidnote" className={nameFocus && name && !validName ? "instructions" : "offscreen"}>
                             <FontAwesomeIcon icon={faInfoCircle} />
                             4 to 24 characters.<br />
                             Must begin with a letter.<br />
                             Letters, numbers, underscores, hyphens allowed.
             </p>*/}
-          <label htmlFor="email">Email:</label>
-          <input
-            type="email"
-            id="email"
-            ref={userRef}
-            onChange={(e) => setEmail(e.target.value)}
-            value={email}
-            required
-            //aria-invalid={validPrice ? "false" : "true"}
-            //aria-describedby="pricenote"
-            onFocus={() => setEmailFocus(true)}
-            onBlur={() => setEmailFocus(false)}
-          />
-          {/*<p id="pricenote" className={priceFocus && !validPrice ? "instructions" : "offscreen"}>
+            <hr></hr>
+            <label htmlFor="email">Email : </label>
+            <input
+              type="email"
+              id="email"
+              ref={userRef}
+              onChange={(e) => setEmail(e.target.value)}
+              value={email}
+              required
+              //aria-invalid={validPrice ? "false" : "true"}
+              //aria-describedby="pricenote"
+              onFocus={() => setEmailFocus(true)}
+              onBlur={() => setEmailFocus(false)}
+            />
+            {/*<p id="pricenote" className={priceFocus && !validPrice ? "instructions" : "offscreen"}>
                             <FontAwesomeIcon icon={faInfoCircle} />
                             Price should be a Number 
         </p>*/}
-          <label htmlFor="id">Brand ID:</label>
-          <input
-            type="text"
-            id="id"
-            ref={userRef}
-            autoComplete="off"
-            onChange={(e) => setId(e.target.value)}
-            value={id}
-            required
-            //aria-invalid={validName ? "false" : "true"}
-            //aria-describedby="uidnote"
-            onFocus={() => setIdFocus(true)}
-            onBlur={() => setIdFocus(false)}
-          />
-          <label htmlfor="pack">Select a Warrenty Pack:</label>
-          <select
-            id="pack"
-            name="pack"
-            onChange={(e) => setWarrenty(e.target.value)}
-            value={warrenty}
-            required
-          >
-            <option value="1">30 Days</option>
-            <option value="2">60 Days</option>
-            <option value="3">90 Days</option>
-          </select>
-          <button
-            disabled={!name || !email || !id || !warrenty ? true : false}
-            onClick={async () => {
-              // const tempMul = (await getEntryFee()).toString();
-              // const tempFee = tempMul * 0.01;
-              // const tempFeeString = tempFee.toString();
-              // const final = ethers.utils.parseEther(tempFeeString);
-              // setEntryFee(final.toString());
-              await deployBrandContract({
-                onSuccess: handleSuccess,
-                onError: (error) => console.log(error),
-              });
-            }}
-          >
-            Submit
-          </button>
-          {/* <button
+            <hr></hr>
+            <label htmlFor="id">Institute ID : </label>
+            <input
+              type="text"
+              id="id"
+              ref={userRef}
+              autoComplete="off"
+              onChange={(e) => setId(e.target.value)}
+              value={id}
+              required
+              //aria-invalid={validName ? "false" : "true"}
+              //aria-describedby="uidnote"
+              onFocus={() => setIdFocus(true)}
+              onBlur={() => setIdFocus(false)}
+            />
+            <hr></hr>
+            <label htmlfor="pack">Select a Contract : </label>
+            <select
+              id="pack"
+              name="pack"
+              onChange={(e) => setWarrenty(e.target.value)}
+              value={warrenty}
+              required
+            >
+              <option value="1" style={{ backgroundColor: "black" }}>
+                30 Days
+              </option>
+              <option value="2" style={{ backgroundColor: "black" }}>
+                60 Days
+              </option>
+              <option value="3" style={{ backgroundColor: "black" }}>
+                90 Days
+              </option>
+            </select>
+            <hr></hr>
+            <button
+              disabled={!name || !email || !id || !warrenty ? true : false}
+              onClick={async () => {
+                // const tempMul = (await getEntryFee()).toString();
+                // const tempFee = tempMul * 0.01;
+                // const tempFeeString = tempFee.toString();
+                // const final = ethers.utils.parseEther(tempFeeString);
+                // setEntryFee(final.toString());
+                setButtonDisabled(true);
+                await deployBrandContract({
+                  onSuccess: handleSuccess,
+                  onError: handleErrorNotification,
+                });
+              }}
+            >
+              {buttonDisabled ? (
+                <Spinner animation="grow" variant="dark" size="sm" />
+              ) : (
+                "Submit"
+              )}
+            </button>
+            {/* <button
             type="submit"
             onClick={async () => {
               await deployBrandContract({
@@ -323,9 +365,10 @@ function RegisterBrand() {
           >
             Submit
           </button> */}
-          {/* </form> */}
-        </section>
-      )}
+            {/* </form> */}
+          </section>
+        )}
+      </div>
     </div>
   );
 }

@@ -1,11 +1,18 @@
-html, body{
+html,
+body {
   margin: 0;
   padding: 0;
   min-height: 100%;
   box-sizing: border-box;
-  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
-    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
+  /* background-color: rgb(25, 25, 25); */
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Roboto", "Oxygen",
+    "Ubuntu", "Cantarell", "Fira Sans", "Droid Sans", "Helvetica Neue",
     sans-serif;
+}
+
+#spinner {
+  position: absolute;
+  top: "100px";
 }
 /*body{
   min-width: 100%;

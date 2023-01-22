@@ -109,10 +109,10 @@ function ViewTable() {
       <ReactBootstrap.Table>
         <thead>
           <tr>
-            <th>BRAND ID</th>
-            <th>BRAND ADDRESS</th>
-            <th>BRAND NAME</th>
-            <th>BRAND EMAIL</th>
+            <th>INSTITUTE ID</th>
+            <th>INSTITUTE ADDRESS</th>
+            <th>INSTITUTE NAME</th>
+            <th>INSTITUTE EMAIL</th>
             <th>WARRANTY LEFT</th>
           </tr>
         </thead>
@@ -125,7 +125,7 @@ function ViewTable() {
                 <td>{currBrand.brandName.toString()}</td>
                 <td>{currBrand.brandEmailAddress.toString()}</td>
                 <td>{currBrand.warrantyPeriod.toString()}</td>
-                <td>{currBrand.smartContractAddress.toString()}</td>
+                {/* <td>{currBrand.smartContractAddress.toString()}</td> */}
               </tr>
             ))}
         </tbody>

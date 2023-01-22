@@ -1,1 +1,473 @@
-[{"type":"constructor","payable":false,"inputs":[{"type":"uint256","name":"interval"}]},{"type":"error","name":"Admin__NoBrandAvailable","inputs":[]},{"type":"error","name":"Admin__UpkeepNotTrue","inputs":[]},{"type":"event","anonymous":false,"name":"BrandAdded","inputs":[{"type":"address","name":"brandAdd","indexed":true}]},{"type":"event","anonymous":false,"name":"WarrantyExtended","inputs":[{"type":"address","name":"brandAdd","indexed":true}]},{"type":"function","name":"addBrand","constant":false,"payable":false,"gas":29000000,"inputs":[{"type":"uint256","name":"_brandID"},{"type":"address","name":"_brandAdd"},{"type":"string","name":"_brandName"},{"type":"string","name":"_brandEmailAddress"},{"type":"uint256","name":"_warrantyIndex"},{"type":"address","name":"_smartContractAddress"}],"outputs":[]},{"type":"function","name":"checkUpkeep","constant":true,"stateMutability":"view","payable":false,"gas":29000000,"inputs":[{"type":"bytes"}],"outputs":[{"type":"bool","name":"upkeepNeeded"},{"type":"bytes"}]},{"type":"function","name":"extendWarranty","constant":false,"stateMutability":"payable","payable":true,"gas":29000000,"inputs":[{"type":"address","name":"_brandAdd"},{"type":"uint256","name":"_warrantyIndex"}],"outputs":[]},{"type":"function","name":"getBrandAddress","constant":true,"stateMutability":"view","payable":false,"gas":29000000,"inputs":[{"type":"uint256","name":"index"}],"outputs":[{"type":"address"}]},{"type":"function","name":"getBrandArrays","constant":true,"stateMutability":"view","payable":false,"gas":29000000,"inputs":[],"outputs":[{"type":"tuple[]","components":[{"type":"uint256","name":"brandID"},{"type":"address","name":"brandAddress"},{"type":"string","name":"brandName"},{"type":"string","name":"brandEmailAddress"},{"type":"uint256","name":"warrantyPeriod"},{"type":"address","name":"smartContractAddress"}]}]},{"type":"function","name":"getBrandData","constant":true,"stateMutability":"view","payable":false,"gas":29000000,"inputs":[{"type":"uint256","name":"index"}],"outputs":[{"type":"tuple","components":[{"type":"uint256","name":"brandID"},{"type":"address","name":"brandAddress"},{"type":"string","name":"brandName"},{"type":"string","name":"brandEmailAddress"},{"type":"uint256","name":"warrantyPeriod"},{"type":"address","name":"smartContractAddress"}]}]},{"type":"function","name":"getBrandEmailAddress","constant":true,"stateMutability":"view","payable":false,"gas":29000000,"inputs":[{"type":"uint256","name":"index"}],"outputs":[{"type":"string"}]},{"type":"function","name":"getBrandID","constant":true,"stateMutability":"view","payable":false,"gas":29000000,"inputs":[{"type":"address","name":"brandAdd"}],"outputs":[{"type":"uint256"}]},{"type":"function","name":"getBrandIndex","constant":true,"stateMutability":"view","payable":false,"gas":29000000,"inputs":[{"type":"address","name":"brandAdd"}],"outputs":[{"type":"uint256"}]},{"type":"function","name":"getBrandName","constant":true,"stateMutability":"view","payable":false,"gas":29000000,"inputs":[{"type":"uint256","name":"index"}],"outputs":[{"type":"string"}]},{"type":"function","name":"getBrandSmartContractAddress","constant":true,"stateMutability":"view","payable":false,"gas":29000000,"inputs":[{"type":"uint256","name":"index"}],"outputs":[{"type":"address"}]},{"type":"function","name":"getBrandWarrantyLeft","constant":true,"stateMutability":"view","payable":false,"gas":29000000,"inputs":[{"type":"uint256","name":"index"}],"outputs":[{"type":"uint256"}]},{"type":"function","name":"getEntryFee","constant":true,"stateMutability":"view","payable":false,"gas":29000000,"inputs":[{"type":"uint256","name":"warrantyPackIndex"}],"outputs":[{"type":"uint256"}]},{"type":"function","name":"getInterval","constant":true,"stateMutability":"view","payable":false,"gas":29000000,"inputs":[],"outputs":[{"type":"uint256"}]},{"type":"function","name":"getNumberOfBrands","constant":true,"stateMutability":"view","payable":false,"gas":29000000,"inputs":[],"outputs":[{"type":"uint256"}]},{"type":"function","name":"getOwner","constant":true,"stateMutability":"view","payable":false,"gas":29000000,"inputs":[],"outputs":[{"type":"address"}]},{"type":"function","name":"getWarrantyPack","constant":true,"stateMutability":"view","payable":false,"gas":29000000,"inputs":[{"type":"uint256","name":"warrantyPackIndex"}],"outputs":[{"type":"uint256"}]},{"type":"function","name":"performUpkeep","constant":false,"payable":false,"gas":29000000,"inputs":[{"type":"bytes"}],"outputs":[]}]
+[
+    {
+        "inputs": [
+            {
+                "internalType": "uint256",
+                "name": "interval",
+                "type": "uint256"
+            }
+        ],
+        "stateMutability": "nonpayable",
+        "type": "constructor"
+    },
+    {
+        "inputs": [],
+        "name": "Admin__NoBrandAvailable",
+        "type": "error"
+    },
+    {
+        "inputs": [],
+        "name": "Admin__UpkeepNotTrue",
+        "type": "error"
+    },
+    {
+        "anonymous": false,
+        "inputs": [
+            {
+                "indexed": true,
+                "internalType": "address",
+                "name": "brandAdd",
+                "type": "address"
+            }
+        ],
+        "name": "BrandAdded",
+        "type": "event"
+    },
+    {
+        "anonymous": false,
+        "inputs": [],
+        "name": "BrandArrayModified",
+        "type": "event"
+    },
+    {
+        "anonymous": false,
+        "inputs": [
+            {
+                "indexed": true,
+                "internalType": "address",
+                "name": "brandAdd",
+                "type": "address"
+            }
+        ],
+        "name": "WarrantyExtended",
+        "type": "event"
+    },
+    {
+        "inputs": [
+            {
+                "internalType": "uint256",
+                "name": "_brandID",
+                "type": "uint256"
+            },
+            {
+                "internalType": "address",
+                "name": "_brandAdd",
+                "type": "address"
+            },
+            {
+                "internalType": "string",
+                "name": "_brandName",
+                "type": "string"
+            },
+            {
+                "internalType": "string",
+                "name": "_brandEmailAddress",
+                "type": "string"
+            },
+            {
+                "internalType": "uint256",
+                "name": "_warrantyIndex",
+                "type": "uint256"
+            },
+            {
+                "internalType": "address",
+                "name": "_smartContractAddress",
+                "type": "address"
+            }
+        ],
+        "name": "addBrand",
+        "outputs": [],
+        "stateMutability": "nonpayable",
+        "type": "function"
+    },
+    {
+        "inputs": [
+            {
+                "internalType": "bytes",
+                "name": "",
+                "type": "bytes"
+            }
+        ],
+        "name": "checkUpkeep",
+        "outputs": [
+            {
+                "internalType": "bool",
+                "name": "upkeepNeeded",
+                "type": "bool"
+            },
+            {
+                "internalType": "bytes",
+                "name": "",
+                "type": "bytes"
+            }
+        ],
+        "stateMutability": "view",
+        "type": "function"
+    },
+    {
+        "inputs": [
+            {
+                "internalType": "address",
+                "name": "_brandAdd",
+                "type": "address"
+            },
+            {
+                "internalType": "uint256",
+                "name": "_warrantyIndex",
+                "type": "uint256"
+            }
+        ],
+        "name": "extendWarranty",
+        "outputs": [],
+        "stateMutability": "payable",
+        "type": "function"
+    },
+    {
+        "inputs": [
+            {
+                "internalType": "uint256",
+                "name": "index",
+                "type": "uint256"
+            }
+        ],
+        "name": "getBrandAddress",
+        "outputs": [
+            {
+                "internalType": "address",
+                "name": "",
+                "type": "address"
+            }
+        ],
+        "stateMutability": "view",
+        "type": "function"
+    },
+    {
+        "inputs": [],
+        "name": "getBrandArrays",
+        "outputs": [
+            {
+                "components": [
+                    {
+                        "internalType": "uint256",
+                        "name": "brandID",
+                        "type": "uint256"
+                    },
+                    {
+                        "internalType": "address",
+                        "name": "brandAddress",
+                        "type": "address"
+                    },
+                    {
+                        "internalType": "string",
+                        "name": "brandName",
+                        "type": "string"
+                    },
+                    {
+                        "internalType": "string",
+                        "name": "brandEmailAddress",
+                        "type": "string"
+                    },
+                    {
+                        "internalType": "uint256",
+                        "name": "warrantyPeriod",
+                        "type": "uint256"
+                    },
+                    {
+                        "internalType": "address",
+                        "name": "smartContractAddress",
+                        "type": "address"
+                    }
+                ],
+                "internalType": "struct Admin.Brand[]",
+                "name": "",
+                "type": "tuple[]"
+            }
+        ],
+        "stateMutability": "view",
+        "type": "function"
+    },
+    {
+        "inputs": [
+            {
+                "internalType": "uint256",
+                "name": "index",
+                "type": "uint256"
+            }
+        ],
+        "name": "getBrandData",
+        "outputs": [
+            {
+                "components": [
+                    {
+                        "internalType": "uint256",
+                        "name": "brandID",
+                        "type": "uint256"
+                    },
+                    {
+                        "internalType": "address",
+                        "name": "brandAddress",
+                        "type": "address"
+                    },
+                    {
+                        "internalType": "string",
+                        "name": "brandName",
+                        "type": "string"
+                    },
+                    {
+                        "internalType": "string",
+                        "name": "brandEmailAddress",
+                        "type": "string"
+                    },
+                    {
+                        "internalType": "uint256",
+                        "name": "warrantyPeriod",
+                        "type": "uint256"
+                    },
+                    {
+                        "internalType": "address",
+                        "name": "smartContractAddress",
+                        "type": "address"
+                    }
+                ],
+                "internalType": "struct Admin.Brand",
+                "name": "",
+                "type": "tuple"
+            }
+        ],
+        "stateMutability": "view",
+        "type": "function"
+    },
+    {
+        "inputs": [
+            {
+                "internalType": "uint256",
+                "name": "index",
+                "type": "uint256"
+            }
+        ],
+        "name": "getBrandEmailAddress",
+        "outputs": [
+            {
+                "internalType": "string",
+                "name": "",
+                "type": "string"
+            }
+        ],
+        "stateMutability": "view",
+        "type": "function"
+    },
+    {
+        "inputs": [
+            {
+                "internalType": "address",
+                "name": "brandAdd",
+                "type": "address"
+            }
+        ],
+        "name": "getBrandID",
+        "outputs": [
+            {
+                "internalType": "uint256",
+                "name": "",
+                "type": "uint256"
+            }
+        ],
+        "stateMutability": "view",
+        "type": "function"
+    },
+    {
+        "inputs": [
+            {
+                "internalType": "address",
+                "name": "brandAdd",
+                "type": "address"
+            }
+        ],
+        "name": "getBrandIndex",
+        "outputs": [
+            {
+                "internalType": "uint256",
+                "name": "",
+                "type": "uint256"
+            }
+        ],
+        "stateMutability": "view",
+        "type": "function"
+    },
+    {
+        "inputs": [
+            {
+                "internalType": "uint256",
+                "name": "id",
+                "type": "uint256"
+            }
+        ],
+        "name": "getBrandIndexFromID",
+        "outputs": [
+            {
+                "internalType": "uint256",
+                "name": "",
+                "type": "uint256"
+            }
+        ],
+        "stateMutability": "view",
+        "type": "function"
+    },
+    {
+        "inputs": [
+            {
+                "internalType": "uint256",
+                "name": "index",
+                "type": "uint256"
+            }
+        ],
+        "name": "getBrandName",
+        "outputs": [
+            {
+                "internalType": "string",
+                "name": "",
+                "type": "string"
+            }
+        ],
+        "stateMutability": "view",
+        "type": "function"
+    },
+    {
+        "inputs": [
+            {
+                "internalType": "uint256",
+                "name": "index",
+                "type": "uint256"
+            }
+        ],
+        "name": "getBrandSmartContractAddress",
+        "outputs": [
+            {
+                "internalType": "address",
+                "name": "",
+                "type": "address"
+            }
+        ],
+        "stateMutability": "view",
+        "type": "function"
+    },
+    {
+        "inputs": [
+            {
+                "internalType": "uint256",
+                "name": "index",
+                "type": "uint256"
+            }
+        ],
+        "name": "getBrandWarrantyLeft",
+        "outputs": [
+            {
+                "internalType": "uint256",
+                "name": "",
+                "type": "uint256"
+            }
+        ],
+        "stateMutability": "view",
+        "type": "function"
+    },
+    {
+        "inputs": [
+            {
+                "internalType": "uint256",
+                "name": "warrantyPackIndex",
+                "type": "uint256"
+            }
+        ],
+        "name": "getEntryFee",
+        "outputs": [
+            {
+                "internalType": "uint256",
+                "name": "",
+                "type": "uint256"
+            }
+        ],
+        "stateMutability": "view",
+        "type": "function"
+    },
+    {
+        "inputs": [],
+        "name": "getInterval",
+        "outputs": [
+            {
+                "internalType": "uint256",
+                "name": "",
+                "type": "uint256"
+            }
+        ],
+        "stateMutability": "view",
+        "type": "function"
+    },
+    {
+        "inputs": [],
+        "name": "getNumberOfBrands",
+        "outputs": [
+            {
+                "internalType": "uint256",
+                "name": "",
+                "type": "uint256"
+            }
+        ],
+        "stateMutability": "view",
+        "type": "function"
+    },
+    {
+        "inputs": [],
+        "name": "getOwner",
+        "outputs": [
+            {
+                "internalType": "address",
+                "name": "",
+                "type": "address"
+            }
+        ],
+        "stateMutability": "view",
+        "type": "function"
+    },
+    {
+        "inputs": [
+            {
+                "internalType": "uint256",
+                "name": "warrantyPackIndex",
+                "type": "uint256"
+            }
+        ],
+        "name": "getWarrantyPack",
+        "outputs": [
+            {
+                "internalType": "uint256",
+                "name": "",
+                "type": "uint256"
+            }
+        ],
+        "stateMutability": "view",
+        "type": "function"
+    },
+    {
+        "inputs": [
+            {
+                "internalType": "bytes",
+                "name": "",
+                "type": "bytes"
+            }
+        ],
+        "name": "performUpkeep",
+        "outputs": [],
+        "stateMutability": "nonpayable",
+        "type": "function"
+    }
+]

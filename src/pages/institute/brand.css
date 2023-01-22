@@ -1,0 +1,195 @@
+/* .warehouse{
+    display: flex;
+    flex-direction: column;
+    margin: 1.5%;
+} */
+
+.warehouse .head {
+    width: 80%;
+    margin: auto;
+    display: flex;
+    justify-content: space-between;
+    padding: auto;
+    text-align: justify;
+  }
+  
+  .warehouse .head button {
+    border-radius: 5%;
+    padding: auto;
+    /* color: white; */
+    color: black;
+    border: 2px solid white;
+    /* background-color: rgb(40, 40, 40); */
+    background-color: white;
+    /* background-color: rgb(28, 28, 28); */
+  }
+  
+  .warehouse .head button:hover {
+    box-shadow: 0 5px 15px rgba(145, 92, 182, 1);
+  }
+  
+  #extendButton {
+    color: white;
+    background-color: rgb(40, 40, 40);
+  }
+  .warehouse .head select {
+    height: 50%;
+    border-radius: 5%;
+  }
+  .warehouse .head > * {
+    padding: 1%;
+  }
+  
+  .warehouse .head h6 {
+    /* padding: 10% 0; */
+    float: right;
+  }
+  .warehouse .cards-outer {
+    text-align: center;
+  }
+  
+  .warehouse .cards {
+    margin: 0% 10%;
+    width: 100%;
+    display: inline-block;
+    text-align: left;
+    justify-content: space-evenly;
+    flex-wrap: wrap;
+  }
+  
+  .warehouse .everyProduct {
+    margin: 5%;
+  }
+  
+  .warehouse .cards > * {
+    display: inline-block;
+    border: none;
+    margin: 1%;
+    color: black;
+  }
+  
+  .newProd {
+    margin: auto;
+    width: 50%;
+    margin-top: 2%;
+  }
+  
+  .newProd section {
+    padding: 5%;
+    border: 5px solid white;
+  }
+  
+  /* .regContainer{
+      align-items: flex-start; 
+      margin:auto;
+  } */
+  
+  .regSection {
+    /* background-color: black; */
+    /* display: flex; */
+    margin: auto;
+    padding: 10px;
+    width: 50%;
+    align-items: center;
+    /* justify-content: space-between; */
+    /* text-align: center; */
+    background-color: rgb(0, 0, 0, 0.75);
+    border-radius: 2%;
+  }
+  
+  .regSection input {
+    float: right;
+    width: 40%;
+  }
+  
+  .regSection select {
+    float: right;
+    width: 40%;
+  }
+  
+  .addProduct {
+    /* background-color: black; */
+    /* display: flex; */
+    margin: auto;
+    padding: 10px;
+    width: 50%;
+    align-items: center;
+    /* justify-content: space-between; */
+    /* text-align: center; */
+  }
+  
+  .addProduct input {
+    float: right;
+    width: 40%;
+  }
+  
+  .regContainer .regSec {
+    max-width: 50%;
+    border: 5px solid white;
+    padding: 5%;
+  }
+  
+  #pack {
+    /* color:red; */
+    /* width: 40%; */
+    border-radius: 2%;
+    height: 35px;
+    color: white;
+    background-color: transparent;
+    font-family: cursive;
+    font-size: 1.15rem;
+    border: none;
+  }
+  
+  #productLink {
+    color: black;
+  }
+  
+  #description {
+    /* display: block; */
+    width: 15rem;
+    overflow: hidden;
+    /* white-space: nowrap; */
+    text-overflow: ellipsis;
+  }
+  
+  #nameProduct {
+    display: block;
+    width: 250px;
+    overflow: hidden;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+  }
+  
+  h1 {
+    padding: 1vh;
+    text-align: center;
+  }
+  /* .regSection label{
+      display: flex;
+      justify-content: space-between;
+  } */
+  
+  /* hr{
+      width:50%;
+  } */
+  
+  .title {
+    color: black;
+  }
+  /* 
+  label {
+    display: block;
+  } */
+  
+  .fullbox {
+    overflow-x: hidden;
+  }
+  
+  .warehouseTopContainer {
+    background-color: rgb(0, 0, 0, 0.75);
+    border-radius: 2%;
+    width: 95%;
+    margin: auto;
+  }
+  

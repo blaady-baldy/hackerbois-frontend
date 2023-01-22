@@ -11,7 +11,7 @@ function ViewProduct(props) {
 
     return (
         <div className="viewProd">
-            <h1>Product Information</h1>
+            <h1>Student Information</h1>
             <Card style={{ width: '18rem' }}>
                 <Card.Img variant="top" src={props.imgURL} />
                 <Card.Body>
@@ -19,13 +19,13 @@ function ViewProduct(props) {
                     <Card.Text>
                         {props.text}
                     </Card.Text>
-                    <Button variant="primary">Go somewhere</Button>
+                    <Button style={{ width: '10rem' }} variant="primary">Link</Button>
                 </Card.Body>
             </Card>
             <div className='btns'>
-                <button onClick={() => setActive('claim')}>Claim Warrenty</button>
-                <button onClick={() => setActive('repair')}>Repair History</button>
-                <button onClick={() => setActive('transfer')}>Transfer Ownership</button>
+                {/* <button onClick={() => setActive('claim')}>Claim Warrenty</button> */}
+                <button onClick={() => setActive('repair')}>Document Details will go here ....</button>
+                {/* <button onClick={() => setActive('transfer')}>Transfer Ownership</button> */}
             </div>
             {active === 'claim' && <ClaimWarrenty />}
             {active === 'repair' && <Repair />}

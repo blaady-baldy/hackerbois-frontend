@@ -1,1 +1,122 @@
-[{"type":"constructor","payable":false,"inputs":[{"type":"address","name":"adminAddress"}]},{"type":"error","name":"BrandFactory__WithdrawFailed","inputs":[]},{"type":"event","anonymous":false,"name":"BrandCreated","inputs":[{"type":"address","name":"brandSmartContAddress","indexed":true}]},{"type":"function","name":"deployBrandContract","constant":false,"stateMutability":"payable","payable":true,"gas":29000000,"inputs":[{"type":"uint256","name":"_brandID"},{"type":"address","name":"_brandOwnerAddress"},{"type":"string","name":"_brandName"},{"type":"string","name":"_brandEmailAddress"},{"type":"uint256","name":"_warrantyPeriod"}],"outputs":[]},{"type":"function","name":"getBalace","constant":true,"stateMutability":"view","payable":false,"gas":29000000,"inputs":[],"outputs":[{"type":"uint256"}]},{"type":"function","name":"getBrandID","constant":true,"stateMutability":"view","payable":false,"gas":29000000,"inputs":[{"type":"address","name":"brandAddress"}],"outputs":[{"type":"uint256"}]},{"type":"function","name":"getEntryFee","constant":true,"stateMutability":"view","payable":false,"gas":29000000,"inputs":[{"type":"uint256","name":"_warrantyPeriod"}],"outputs":[{"type":"uint256"}]},{"type":"function","name":"withdraw","constant":false,"payable":false,"gas":29000000,"inputs":[],"outputs":[]}]
+[
+    {
+        "inputs": [
+            {
+                "internalType": "address",
+                "name": "adminAddress",
+                "type": "address"
+            }
+        ],
+        "stateMutability": "nonpayable",
+        "type": "constructor"
+    },
+    {
+        "inputs": [],
+        "name": "BrandFactory__WithdrawFailed",
+        "type": "error"
+    },
+    {
+        "anonymous": false,
+        "inputs": [
+            {
+                "indexed": true,
+                "internalType": "contract Brands",
+                "name": "brandSmartContAddress",
+                "type": "address"
+            }
+        ],
+        "name": "BrandCreated",
+        "type": "event"
+    },
+    {
+        "inputs": [
+            {
+                "internalType": "uint256",
+                "name": "_brandID",
+                "type": "uint256"
+            },
+            {
+                "internalType": "address",
+                "name": "_brandOwnerAddress",
+                "type": "address"
+            },
+            {
+                "internalType": "string",
+                "name": "_brandName",
+                "type": "string"
+            },
+            {
+                "internalType": "string",
+                "name": "_brandEmailAddress",
+                "type": "string"
+            },
+            {
+                "internalType": "uint256",
+                "name": "_warrantyPeriod",
+                "type": "uint256"
+            }
+        ],
+        "name": "deployBrandContract",
+        "outputs": [],
+        "stateMutability": "payable",
+        "type": "function"
+    },
+    {
+        "inputs": [],
+        "name": "getBalace",
+        "outputs": [
+            {
+                "internalType": "uint256",
+                "name": "",
+                "type": "uint256"
+            }
+        ],
+        "stateMutability": "view",
+        "type": "function"
+    },
+    {
+        "inputs": [
+            {
+                "internalType": "address",
+                "name": "brandAddress",
+                "type": "address"
+            }
+        ],
+        "name": "getBrandID",
+        "outputs": [
+            {
+                "internalType": "uint256",
+                "name": "",
+                "type": "uint256"
+            }
+        ],
+        "stateMutability": "view",
+        "type": "function"
+    },
+    {
+        "inputs": [
+            {
+                "internalType": "uint256",
+                "name": "_warrantyPeriod",
+                "type": "uint256"
+            }
+        ],
+        "name": "getEntryFee",
+        "outputs": [
+            {
+                "internalType": "uint256",
+                "name": "",
+                "type": "uint256"
+            }
+        ],
+        "stateMutability": "view",
+        "type": "function"
+    },
+    {
+        "inputs": [],
+        "name": "withdraw",
+        "outputs": [],
+        "stateMutability": "nonpayable",
+        "type": "function"
+    }
+]

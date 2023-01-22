@@ -55,14 +55,14 @@ function Customer() {
       {/*if token id was correct -> show product */}
       {success ? (
         //<Link to='/dh'></Link>
-        <ViewProduct title="My Product" text="Describe the product" imgURL="" />
+        <ViewProduct title="Student" text="Link to student details" imgURL="" />
       ) : (
         <section>
           <p ref={errRef} className={errMsg ? "errmsg" : "offscreen"} aria-live="assertive">{errMsg}</p>
-          <h1>Check Ownership</h1>
+          <h1>Verify Document</h1>
           <form onSubmit={handleSubmit}>
             <label htmlFor="brandid">
-              Brand ID:
+              Institute Address:
             </label>
             <input
               type="text"
@@ -78,7 +78,7 @@ function Customer() {
               onBlur={() => setBrandIdFocus(false)}
             />
             <label htmlFor="productid">
-              Product ID:
+              Token ID:
             </label>
             <input
               type="text"
@@ -93,6 +93,7 @@ function Customer() {
               onFocus={() => setProductIdFocus(true)}
               onBlur={() => setProductIdFocus(false)}
             />
+            <br></br>
             <button disabled={!brandId || !productId ? true : false} >Check</button>
           </form>
         </section>

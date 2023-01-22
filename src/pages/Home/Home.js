@@ -2,7 +2,7 @@ import React from "react";
 //import {init} from "./utils/initDrone.js";
 import {Link} from 'react-router-dom';
 import './home.css'
-import "../customer/customer.css"
+import "../student/customer.css"
 
 function Home() {
 
@@ -11,8 +11,8 @@ function Home() {
     <section className="home" >
       <h1>Choose profile here</h1>
       <button ><Link to="/admin">ADMIN</Link></button>
-      <button><Link to="/brand">BRAND</Link></button>
-      <button><Link to="/customer">CUSTOMER</Link></button>
+      <button><Link to="/institute">INSTITUTE</Link></button>
+      <button><Link to="/student">STUDENT</Link></button>
     </section>
   </div>
   );

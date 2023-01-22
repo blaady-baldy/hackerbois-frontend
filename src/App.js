@@ -3,10 +3,10 @@ import "./App.css";
 import Home from "./pages/Home/Home";
 import DummyCanvas from "../src/pages/dummy3/dummyCanvas.js";
 import Admin from "./pages/admin/landing";
-import Brand from "./pages/brand/landing";
-import Customer from "./pages/customer/landing";
-import ConnectWallet from "../src/pages/brand/connectWallet";
-import Warehouse from "./pages/brand/warehouse";
+import Institue from "./pages/institute/landing";
+import Student from "./pages/student/landing";
+import ConnectWallet from "../src/pages/institute/connectWallet";
+import Warehouse from "./pages/institute/warehouse";
 import Error from "./pages/error";
 import { MoralisProvider } from "react-moralis";
 import { BrowserRouter as Router, Routes, Route, Link } from "react-router-dom";
@@ -21,18 +21,18 @@ function App() {
         <div className="App">
           <Router>
             <nav>
-              <Link to="/">Home</Link>
+              <Link to="/">Dov Verification Portal</Link>
               <Link to="/admin">Admin</Link>
-              <Link to="/brand">Brand</Link>
-              <Link to="/customer">Customer</Link>
+              <Link to="/institute">Institute</Link>
+              <Link to="/student">Student</Link>
               <ConnectWallet />
             </nav>
             <Routes>
               <Route path="/" element={<Home />} />
               <Route path="/admin" element={<Admin />} />
-              <Route path="/brand" element={<Brand />} />
-              <Route path="/brand/warehouse" element={<Warehouse />} />
-              <Route path="/customer" element={<Customer />} />
+              <Route path="/institute" element={<Institue />} />
+              <Route path="/institute/warehouse" element={<Warehouse />} />
+              <Route path="/student" element={<Student />} />
               <Route path="*" element={<Error />} />
             </Routes>
             {
